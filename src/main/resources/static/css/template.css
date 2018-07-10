@@ -1,0 +1,10 @@
+@charset "UTF-8";
+ul{list-style: none;}
+a{text-decoration: none; }
+
+.headerWrap{height:100px; background: #3b3b3b;}
+.header{min-width: 1000px; width: 1000px; margin: auto;}
+.header li{float:left; padding: 0 20px 0 20px; }
+.header li a{text-decoration: none; color:#808080; font-size: 20px;}
+.header li a:hover{color: #fff}
+.content{width: 1000px; height: 100%;}

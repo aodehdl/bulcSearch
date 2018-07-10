@@ -17,12 +17,9 @@ buildscript {
 	}
 }
 
-/*idea {
-    module {
-        inheritOutputDirs = false
-        outputDir = file("$buildDir/classes/main/")
-    }
-}*/
+bootRun {
+	addResources = true
+}
 
 group = 'bulc.search.kr'
 version = '0.0.1-SNAPSHOT'
@@ -37,6 +34,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.springframework.boot:spring-boot-devtools")
+	compile('net.sourceforge.nekohtml:nekohtml')
 
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 	compile 'commons-io:commons-io:2.5'
