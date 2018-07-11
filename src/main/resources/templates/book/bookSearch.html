@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<ul class="inline-grid">
+    <li data-th-each="orderItem:${result?.documents}"  class="bookList">
+        <ul>
+            <li class="left listShot"><img data-th-src="${orderItem.thumbnail}" width="95" height="138"></li>
+            <li class="left listDetail">
+                <dl>
+                    <dt style="margin: 20px;"><th:block data-th-utext="${orderItem.title}"/></dt>
+                    <dd class="left listDetailInfo">
+                        <ul class="">
+                            <li><th:block data-th-utext="${orderItem.authors}"/></li>
+                            <li><th:block data-th-utext="${orderItem.datetime}"/></li>
+                            <li><th:block data-th-utext="${orderItem.price}"/>원</li>
+                            <li><th:block data-th-utext="${orderItem.status}"/></li>
+                        </ul>
+                    </dd>
+                    <dd class="listDetailBook"><th:block data-th-utext="${orderItem.contents}"/></dd>
+                </dl>
+            </li>
+        </ul>
+    </li>
+</ul>

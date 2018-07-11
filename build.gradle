@@ -8,12 +8,15 @@ buildscript {
 		springBootVersion = '1.5.3.RELEASE'
 		springVersion = '4.3.8.RELEASE'
 		springCloudVersion = '1.3.0.RELEASE'
+		feignVersion = '9.5.0'
 	}
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE")
+		classpath 'org.springframework:springloaded:1.2.4.RELEASE'
 	}
 }
 
@@ -54,4 +57,21 @@ dependencies {
 
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	compile 'com.google.code.gson:gson:2.7'
+
+	compile("io.github.openfeign:feign-gson:$feignVersion") {
+		exclude group: 'com.google.code.gson'
+	}
+
+	compile "io.github.openfeign:feign-httpclient:$feignVersion"
+	compile "io.github.openfeign:feign-slf4j:$feignVersion"
+
+	compile("org.springframework.cloud:spring-cloud-starter-feign:$springCloudVersion") {
+		exclude group: 'org.springframework.boot'
+		exclude group: 'org.springframework'
+		exclude group: 'io.github.openfeign'
+		exclude module: 'spring-cloud-starter-ribbon'
+		exclude module: 'spring-cloud-starter-archaius'
+	}
 }
