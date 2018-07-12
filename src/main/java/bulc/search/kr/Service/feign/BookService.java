@@ -19,7 +19,7 @@ public interface BookService {
             @RequestParam("query") String query,
             @RequestParam(value = "sort", required = false) String sort,
             @RequestParam(value = "category", required = false) String category,
-            @RequestParam(value = "target", required = false) String targetm,
+            @RequestParam(value = "target", required = false) String target,
             @RequestParam(value = "page", required = false) String page);
 
 }

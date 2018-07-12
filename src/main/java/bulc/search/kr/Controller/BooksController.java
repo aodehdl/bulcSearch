@@ -34,11 +34,16 @@ public class BooksController {
      * 책검색
      * @return
      */
-    @RequestMapping(value = "/book/bookSearch", method= RequestMethod.GET)
-    public String bookSearch(Model model) {
+    @RequestMapping(value = "/book/bookSearch", method= RequestMethod.POST)
+    public String bookSearch(@ModelAttribute BookSearchDto.Req req, Model model) {
         log.info("bookSearch");
 
-        BookSearchDto.Res res = bookService.getBook("이효리", "","","", "");
+        BookSearchDto.Res res = bookService.getBook("이효리",  req.getSort(), req.getCategory(), req.getTarget(), req.getPage());
+
+        // 실제 보여줄 목록이 없다면 검색결과가 없다고 판단
+        if(res.getMeta().getPageableCount() > 0){
+            res.getMeta().setPage(req.getPage());
+        }
 
         model.addAttribute("result", res);
 

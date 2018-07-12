@@ -6,6 +6,15 @@
 <head>
     <script>
         var bookView = {
+            // 책 목록 검색
+            getBookList:function () {
+                // 현재 페이값이 없는경우 1로 고정
+                var param = {page:$("#page").val()};
+
+                bookView.serachDetailShowHide(true);
+
+                $("#bookSearchResult").load("/book/bookSearch", param);
+            },
             moveBookDetail:function (barCode) {
                 // 현재 페이값이 없는경우 1로 고정
                 var param = {barcode:barCode};
@@ -19,6 +28,8 @@
             serachDetailShowHide:function (bool) {
                 if(bool){
                     //검색시
+                    $("#bookSearchResult").show();
+                    $("#bookDetail").hide();
                 }else{
                     //상세화면 열기시
                     $("#bookSearchResult").hide();
@@ -28,7 +39,7 @@
             }
         }
         $(function() {
-            $("#bookSearchResult").load("/book/bookSearch");
+            bookView.getBookList();
         });
     </script>
 </head>

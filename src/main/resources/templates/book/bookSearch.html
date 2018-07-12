@@ -25,10 +25,17 @@
                     </dd>
                     <dd class="listDetailBook">
                         <th:block data-th-utext="${orderItem.contents}"/>
-                        <input type="hidden" data-th-value="${orderItem.isbn}">
                     </dd>
                 </dl>
             </li>
         </ul>
     </li>
 </ul>
+<!-- 페이지 영역 -->
+<div>
+    <input type="text" id="page" name="page" data-th-value="${result?.meta?.page}" width="40"/>
+    /
+    <span data-th-text="${result?.meta?.pageableCount}"/>
+    <input type="button" width="110px" height="40px" value="바로가기">
+    <input type="button"  onclick="bookView.getBookList();return false;"  width="40" value="Go"/>
+</div>
