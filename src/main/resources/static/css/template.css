@@ -1,7 +1,9 @@
 @charset "UTF-8";
 ul{list-style: none;}
 a{text-decoration: none; }
-.left{float:left; margin: 0 20px 0 20px}
+div{display:block;}
+.right{float:right;}
+.left{float:left; margin: 0 20px 0 20px; overflow:hidden;}
 .inline-grid{display: inline-grid}
 
 .headerWrap{height:100px; background: #3b3b3b;}
@@ -16,3 +18,11 @@ a{text-decoration: none; }
 .listDetail{width: 700px;}
 .listDetailInfo{width: 260px;}
 .listDetailBook{overflow: hidden; width: 400px;}
+
+<!--책검색 상세-->
+.thumbnail{width:400px;}
+.info{width:550px;}
+.title{font-weight:bold; font-size:20px;}
+.line{border-top: 1px solid #5e7b71; margin: 10px 0; }
+.detailInfo{width:1000px; clear:both;}
+

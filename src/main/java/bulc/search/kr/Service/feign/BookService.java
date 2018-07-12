@@ -15,10 +15,11 @@ public interface BookService {
      *
      * */
     @RequestMapping( method = RequestMethod.GET, value = "/v2/search/book", produces={"application/json; charset=UTF-8"})
-    BookSearchDto.Res searchBook(
+    BookSearchDto.Res getBook(
             @RequestParam("query") String query,
             @RequestParam(value = "sort", required = false) String sort,
             @RequestParam(value = "category", required = false) String category,
-            @RequestParam(value = "target", required = false) String target
-    );
+            @RequestParam(value = "target", required = false) String targetm,
+            @RequestParam(value = "page", required = false) String page);
+
 }

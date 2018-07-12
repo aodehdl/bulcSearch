@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+<script>
+    $(function() {
+    });
+</script>
+<!-- 검색결과 영역 -->
 <ul class="inline-grid">
     <li data-th-each="orderItem:${result?.documents}"  class="bookList">
         <ul>
             <li class="left listShot"><img data-th-src="${orderItem.thumbnail}" width="95" height="138"></li>
             <li class="left listDetail">
                 <dl>
-                    <dt style="margin: 20px;"><th:block data-th-utext="${orderItem.title}"/></dt>
+                    <dt style="margin: 20px;">
+                        <a href="#" data-th-onclick="'bookView.moveBookDetail(\''+${orderItem.barcode}+'\'); return false;'"><th:block data-th-utext="${orderItem.title}"/></a>
+                    </dt>
                     <dd class="left listDetailInfo">
                         <ul class="">
                             <li><th:block data-th-utext="${orderItem.authors}"/></li>
@@ -16,7 +23,10 @@
                             <li><th:block data-th-utext="${orderItem.status}"/></li>
                         </ul>
                     </dd>
-                    <dd class="listDetailBook"><th:block data-th-utext="${orderItem.contents}"/></dd>
+                    <dd class="listDetailBook">
+                        <th:block data-th-utext="${orderItem.contents}"/>
+                        <input type="hidden" data-th-value="${orderItem.isbn}">
+                    </dd>
                 </dl>
             </li>
         </ul>

@@ -5,15 +5,42 @@
       layout:decorator="./layout/template">
 <head>
     <script>
+        var bookView = {
+            moveBookDetail:function (barCode) {
+                // 현재 페이값이 없는경우 1로 고정
+                var param = {barcode:barCode};
+
+                bookView.serachDetailShowHide(false);
+
+                $("#bookDetail").load("/book/bookDetail", param);
+            },
+
+            // 검색 및 상세보기 시 한 영역 숨기기
+            serachDetailShowHide:function (bool) {
+                if(bool){
+                    //검색시
+                }else{
+                    //상세화면 열기시
+                    $("#bookSearchResult").hide();
+                    $("#bookDetail").show();
+                }
+
+            }
+        }
         $(function() {
-            alert("dd");
-            $(".content").load("/book/bookSearch");
+            $("#bookSearchResult").load("/book/bookSearch");
         });
     </script>
 </head>
 <body>
 <section layout:fragment="content">
     <div class="content">
+        <!-- 검색결과 영역 -->
+        <div id="bookSearchResult">
+        </div>
+        <!-- 책 상세 -->
+        <div id="bookDetail">
+        </div>
     </div>
 </section>
 </body>
