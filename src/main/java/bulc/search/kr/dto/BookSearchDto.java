@@ -45,6 +45,7 @@ public class BookSearchDto {
             Integer totalCount; //검색어에 검색된 문서수
             /*@SerializedName("pageable_count")*/
             Integer pageableCount; // total_count 중에 노출가능 문서수
+            String page; // 현재페이지
             /*@SerializedName("is_end")*/
             Boolean isEnd;  // 현재 페이지가 마지막 페이지인지 여부. 값이 false이면 page를 증가시켜 다음 페이지를 요청할 수 있음.
         }
