@@ -8,11 +8,11 @@
     </script>
 </head>
 <body>
-    <div style="width:1000px;">
+    <div>
         <div class="thumbnail left">
             <img data-th-src="${result?.thumbnail}" width="400" height="400">
         </div>
-        <div class="info">
+        <div class="info left">
             <span data-th-utext="${result?.title}" class="title"></span>
             <ul>
                 <li>
@@ -41,12 +41,14 @@
                     <span data-th-text="${result?.salePrice}" class="right"></span>
                 </li>
                 <li>
-                    <input type="button" width="110px" height="40px" value="바로가기">
+                    <div class="btnAreas">
+                        <a href="#" class="btnOk">바로가기</a>
+                        <a href="#" class="btnCancle" onclick="bookView.serachDetailShowHide(true); return false;">목록</a>
+                    </div>
                 </li>
             </ul>
         </div>
-        <div data-th-text="${result?.content}" class="detailInfo">
-
+        <div data-th-text="${result?.contents}" class="detailInfo">
         </div>
     </div>
 </body>
