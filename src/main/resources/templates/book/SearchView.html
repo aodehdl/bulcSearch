@@ -8,6 +8,9 @@
         var bookView = {
             // 책 목록 검색
             getBookList:function () {
+                if($("#page").val() > $("#pageableCount").val()){
+                    alert("총 페이지 이상값 입력 불가!");
+                }
                 // 현재 페이값이 없는경우 1로 고정
                 var param = {page:$("#page").val()};
 

@@ -2,8 +2,9 @@
 ul{list-style: none;}
 a{text-decoration: none; }
 .right{float:right;}
-.left{float:left;}
+li .left{float:left;}
 .inline-grid{display: inline-grid}
+.clear{clear:both;}
 
 .headerWrap{height:100px; background: #3b3b3b;}
 .header{min-width: 1000px; width: 1000px; margin: auto;}
@@ -22,12 +23,12 @@ a{text-decoration: none; }
 .thumbnail{width:400px;}
 .info{width:550px;}
 .title{font-weight:bold; font-size:20px;}
-.line{border-top: 1px solid #5e7b71; margin: 10px 0; }
+.line{border-top: 1px solid #5e7b71; margin: 10px 0;}
 .detailInfo{width:1000px; clear:both;}
 .info li{overflow:hidden;}
 
 <!--버튼 디자인-->
-.btnAreas{width:100%; text-align:center;}
+.btnSite{width:100%; text-align:center;}
 .btnOk{background:#ff690e; padding:13px 30px 15px; font-size:14px; color:#fff; text-decoration:none; height: 40px;}
 .btnCancle{background:#333; padding:13px 30px 15px; font-size:14px; color:#fff; text-decoration:none; height: 40px;}
 

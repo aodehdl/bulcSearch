@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @Service
 @FeignClient( name = "kakaoBookSearch", url="${kakao.url}", configuration = kakaoDevConfig.class )
 public interface BookService {
+
     /**
      *
      * 카카오 책 검색을 이용하여 목록 가져오기
@@ -20,6 +21,7 @@ public interface BookService {
             @RequestParam(value = "sort", required = false) String sort,
             @RequestParam(value = "category", required = false) String category,
             @RequestParam(value = "target", required = false) String target,
-            @RequestParam(value = "page", required = false) String page);
+            @RequestParam(value = "page", required = false) String page,
+            @RequestParam(value = "size", required = false) int size);
 
 }

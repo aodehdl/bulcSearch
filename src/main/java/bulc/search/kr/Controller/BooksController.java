@@ -38,11 +38,12 @@ public class BooksController {
     public String bookSearch(@ModelAttribute BookSearchDto.Req req, Model model) {
         log.info("bookSearch");
 
-        BookSearchDto.Res res = bookService.getBook("이효리",  req.getSort(), req.getCategory(), req.getTarget(), req.getPage());
+        BookSearchDto.Res res = bookService.getBook("이효리",  req.getSort(), req.getCategory(), req.getTarget(), req.getPage(), 30);
 
         // 실제 보여줄 목록이 없다면 검색결과가 없다고 판단
         if(res.getMeta().getPageableCount() > 0){
             res.getMeta().setPage(req.getPage());
+            res.getMeta().setSize(30);
         }
 
         model.addAttribute("result", res);
@@ -61,7 +62,7 @@ public class BooksController {
         log.info("bookDetail");
 
 //        BookSearchDto.Res res = bookService.getBook(req.getQuery(),  req.getSort(), req.getCategory(), req.getTarget(), req.getPage());
-        BookSearchDto.Res res = bookService.getBook("이효리",  req.getSort(), req.getCategory(), req.getTarget(), req.getPage());
+        BookSearchDto.Res res = bookService.getBook("이효리",  req.getSort(), req.getCategory(), req.getTarget(), req.getPage(), 30);
         BookSearchDto.Res.Document result = null;
 
         // 실제 보여줄 목록이 없다면 검색결과가 없다고 판단
