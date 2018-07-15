@@ -6,25 +6,33 @@
 <head>
     <script>
         var bookView = {
+            // 마지막 검색값
+            lastSearchObj:null,
+            getSearchBookList:function(){
+                bookView.lastSearchObj = $("#bookForm").serializeObject();
+                bookView.serachDetailShowHide(true);
+                $("#bookSearchResult").load("/book/bookSearch", bookView.lastSearchObj);
+            },
             // 책 목록 검색
             getBookList:function () {
                 if($("#page").val() > $("#pageableCount").val()){
                     alert("총 페이지 이상값 입력 불가!");
+                    return;
                 }
                 // 현재 페이값이 없는경우 1로 고정
-                var param = {page:$("#page").val()};
+                bookView.lastSearchObj.page = $("#page").val();
 
                 bookView.serachDetailShowHide(true);
 
-                $("#bookSearchResult").load("/book/bookSearch", param);
+                $("#bookSearchResult").load("/book/bookSearch", bookView.lastSearchObj);
             },
             moveBookDetail:function (barCode) {
                 // 현재 페이값이 없는경우 1로 고정
-                var param = {barcode:barCode};
+                bookView.lastSearchObj.barcode=barCode;
 
                 bookView.serachDetailShowHide(false);
 
-                $("#bookDetail").load("/book/bookDetail", param);
+                $("#bookDetail").load("/book/bookDetail", bookView.lastSearchObj);
             },
 
             // 검색 및 상세보기 시 한 영역 숨기기
@@ -42,13 +50,26 @@
             }
         }
         $(function() {
-            bookView.getBookList();
         });
     </script>
 </head>
 <body>
 <section layout:fragment="content">
     <div class="content">
+        <!-- 검색결과 영역 -->
+        <div>
+            <form id="bookForm" name="bookForm" action="#">
+                <select id="target" name="target" style="width:100px; height:40px;">
+                    <option value="all">전체</option>
+                    <option value="keyword">저자</option>
+                    <option value="publisher">출판사</option>
+                </select>
+                <input type="text" id="query" name="query" class="text_input" style="width:100px;"/>
+                <div class="btnAreas">
+                    <a href="#" class="btnOk" onclick="bookView.getSearchBookList(); return false;">검색</a>
+                </div>
+            </form>
+        </div>
         <!-- 검색결과 영역 -->
         <div id="bookSearchResult">
         </div>

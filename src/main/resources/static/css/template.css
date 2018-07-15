@@ -3,6 +3,7 @@ ul{list-style: none;}
 a{text-decoration: none; }
 .right{float:right;}
 li .left{float:left;}
+.left{float:left;}
 .inline-grid{display: inline-grid}
 .clear{clear:both;}
 
@@ -19,7 +20,6 @@ li .left{float:left;}
 .listDetailInfo{width: 260px;}
 .listDetailBook{overflow: hidden; width: 400px;}
 
-<!--책검색 상세-->
 .thumbnail{width:400px;}
 .info{width:550px;}
 .title{font-weight:bold; font-size:20px;}
@@ -27,11 +27,9 @@ li .left{float:left;}
 .detailInfo{width:1000px; clear:both;}
 .info li{overflow:hidden;}
 
-<!--버튼 디자인-->
 .btnSite{width:100%; text-align:center;}
 .btnOk{background:#ff690e; padding:13px 30px 15px; font-size:14px; color:#fff; text-decoration:none; height: 40px;}
 .btnCancle{background:#333; padding:13px 30px 15px; font-size:14px; color:#fff; text-decoration:none; height: 40px;}
 
-<!--최근검색어 디자인-->
-.searchHistory{width:200px; position:fixed; left:200px; list-style:none; display:grid;}
+.searchHistory{width:200px; position:fixed; left:1500px; list-style:none; display:grid;}
 .searchHistory li{border: solid 1px;}

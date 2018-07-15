@@ -18,7 +18,7 @@ public class BookSearchDto {
         String query; //query   검색어   	String 필수여부 O
         String sort; // sort	정렬방식 	String 필수여부 X
         String page; // page   현재페이지	String 필수여부 X 기본값 1
-        String size; // size	페이지당갯수	String 필수여부 X 기본값 10
+        Integer size; // size	페이지당갯수	String 필수여부 X 기본값 10
         String target; // target	검색필드	String 필수여부 X 기본값 all
         String category; //category 카테고리	String 필수여부 X
 

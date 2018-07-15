@@ -1,7 +1,9 @@
 package bulc.search.kr.Controller;
 
+import bulc.search.kr.Service.feign.BookJpaService;
 import bulc.search.kr.Service.feign.BookService;
 import bulc.search.kr.dto.BookSearchDto;
+import bulc.search.kr.entity.BookHistoryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import org.thymeleaf.util.ListUtils;
 public class BooksController {
     @Autowired
     private BookService bookService;
+    @Autowired
+    private BookJpaService bookJpaService;
 
     /**
      * 책검색 화면 열기
@@ -38,13 +42,17 @@ public class BooksController {
     public String bookSearch(@ModelAttribute BookSearchDto.Req req, Model model) {
         log.info("bookSearch");
 
-        BookSearchDto.Res res = bookService.getBook("이효리",  req.getSort(), req.getCategory(), req.getTarget(), req.getPage(), 30);
+        req.setSize(30);
+
+        BookSearchDto.Res res = bookService.getBook(req.getQuery(),  req.getSort(), req.getCategory(), req.getTarget(), req.getPage(), 30);
 
         // 실제 보여줄 목록이 없다면 검색결과가 없다고 판단
         if(res.getMeta().getPageableCount() > 0){
             res.getMeta().setPage(req.getPage());
             res.getMeta().setSize(30);
         }
+        //최근검색 저장
+        log.info("jpa : {}",bookJpaService.bookHistoryAdd(req).get(0).getQuery());
 
         model.addAttribute("result", res);
 
@@ -61,8 +69,7 @@ public class BooksController {
     public String bookDetail(@ModelAttribute BookSearchDto.Req req, Model model) {
         log.info("bookDetail");
 
-//        BookSearchDto.Res res = bookService.getBook(req.getQuery(),  req.getSort(), req.getCategory(), req.getTarget(), req.getPage());
-        BookSearchDto.Res res = bookService.getBook("이효리",  req.getSort(), req.getCategory(), req.getTarget(), req.getPage(), 30);
+        BookSearchDto.Res res = bookService.getBook(req.getQuery(),  req.getSort(), req.getCategory(), req.getTarget(), req.getPage(), 30);
         BookSearchDto.Res.Document result = null;
 
         // 실제 보여줄 목록이 없다면 검색결과가 없다고 판단
