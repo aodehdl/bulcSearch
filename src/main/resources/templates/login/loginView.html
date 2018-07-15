@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="./layout/template">
+<head>
+    <script>
+        var login = {
+            loginExec : function(){
+                var param = $("#loginForm").serializeObject();
+                // 비밀번호 암호화
+                param.password = hex_sha512(param.password);
+
+                $.post('/login/login', param).done(function (data) {
+                    location.replace("/book/SearchView");
+                });
+            }
+        };
+        $(function() {
+        });
+    </script>
+</head>
+<body>
+<section layout:fragment="content">
+    <form id="loginForm" action="#" onsubmit="return false;">
+        <div class="container">
+            <label for="userId"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" id="userId" name="userId" required>
+            <br/>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="password" name="password" required>
+            <br/>
+            <a href="#" class="btnOk" onclick="login.loginExec(); return false;">login</a>
+        </div>
+    </form>
+</section>
+</body>
+</html>

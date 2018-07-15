@@ -1,4 +1,4 @@
-package bulc.search.kr.Service.feign;
+package bulc.search.kr.Service;
 
 import bulc.search.kr.dto.BookSearchDto;
 import bulc.search.kr.entity.BookHistory;

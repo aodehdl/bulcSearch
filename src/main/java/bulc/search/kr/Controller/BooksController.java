@@ -1,6 +1,6 @@
 package bulc.search.kr.Controller;
 
-import bulc.search.kr.Service.feign.BookJpaService;
+import bulc.search.kr.Service.BookJpaService;
 import bulc.search.kr.Service.feign.BookService;
 import bulc.search.kr.dto.BookSearchDto;
 import bulc.search.kr.entity.BookHistory;

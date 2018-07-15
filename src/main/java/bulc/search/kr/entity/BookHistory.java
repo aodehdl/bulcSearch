@@ -4,8 +4,6 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.Calendar;
 
 @Getter

@@ -10,15 +10,13 @@
                 bookView.getSearchBookList();
             }
         }
-        $(function() {
-        });
     </script>
 </head>
 <ul class="searchHistory">
     <li style="text-align:center;">
         <span style="text-align:center;">최근 검색어</span>
     </li>
-    <li data-th-each="orderItem:${result}">
+    <li data-th-test="${result != null}" data-th-each="orderItem:${result}">
         <span style="height:100%;float:left" >
             <a href="#" data-th-text="${orderItem?.query}"
                  data-th-onclick="'bookHistory.searchBook(\''+${orderItem?.query}+'\', \''+${orderItem?.target}+'\'); return false;'"></a></span>

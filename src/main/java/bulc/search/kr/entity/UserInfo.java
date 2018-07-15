@@ -18,7 +18,7 @@ public class UserInfo {
     private String userId;
 
     @JsonIgnore
-    @Column(length = 128, nullable = false)
+    @Column(length = 128, updatable = false, nullable = false)
     private String password;
 
 
