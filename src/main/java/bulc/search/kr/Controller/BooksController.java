@@ -6,16 +6,16 @@ import bulc.search.kr.dto.BookSearchDto;
 import bulc.search.kr.entity.BookHistory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.DateUtils;
 
+import java.util.Date;
 import java.util.List;
 
-/**
- * Created by MAIN-PC on 2018-07-11.
- */
 @Slf4j
 @Controller
 public class BooksController {
@@ -51,14 +51,19 @@ public class BooksController {
         if(res.getMeta().getPageableCount() > 0){
             res.getMeta().setPage(req.getPage());
             res.getMeta().setSize(30);
+
+            // 날짜 형식 변경
+            for(BookSearchDto.Res.Document temp : res.getDocuments()){
+                //yyyy-mm-dd
+                temp.setDatetime(temp.getDatetime().substring(0,10));
+            }
         }
 
         //최근검색 저장
-        log.info("jpa : {}",bookJpaService.bookHistoryAdd(req).get(0).getRegDttm());
+        bookJpaService.bookHistoryAdd(req);
 
         model.addAttribute("result", res);
 
-        log.info("result : {}", res);
 
         return "/book/bookSearch";
     }

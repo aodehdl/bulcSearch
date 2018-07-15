@@ -15,7 +15,7 @@ public class BookJpaService {
     private BookHistoryRepository bookHistoryRepository;
 
     // 최근검색어 추가
-    public List<BookHistory> bookHistoryAdd(BookSearchDto.Req dto){
+    public void bookHistoryAdd(BookSearchDto.Req dto){
         bookHistoryRepository.save(BookHistory.builder()
                 .userId("test")
                 .query(dto.getQuery())
@@ -24,7 +24,6 @@ public class BookJpaService {
                 .target(dto.getTarget())
                 .build());
 
-        return bookHistoryRepository.findFirst10ByUserId("test", new Sort(Sort.Direction.DESC, "regDttm"));
     }
 
     // 최근검색어 불러오기
