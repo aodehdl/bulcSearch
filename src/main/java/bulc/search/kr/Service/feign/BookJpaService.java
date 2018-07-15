@@ -13,6 +13,8 @@ import java.util.List;
 public class BookJpaService {
     @Autowired
     private BookHistoryRepository bookHistoryRepository;
+
+    // 최근검색어 추가
     public List<BookHistory> bookHistoryAdd(BookSearchDto.Req dto){
         bookHistoryRepository.save(BookHistory.builder()
                 .userId("test")
@@ -22,6 +24,11 @@ public class BookJpaService {
                 .target(dto.getTarget())
                 .build());
 
+        return bookHistoryRepository.findFirst10ByUserId("test", new Sort(Sort.Direction.DESC, "regDttm"));
+    }
+
+    // 최근검색어 불러오기
+    public List<BookHistory> getBookHistory(BookSearchDto.Req dto){
         return bookHistoryRepository.findFirst10ByUserId("test", new Sort(Sort.Direction.DESC, "regDttm"));
     }
 }

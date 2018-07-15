@@ -3,14 +3,15 @@ package bulc.search.kr.Controller;
 import bulc.search.kr.Service.feign.BookJpaService;
 import bulc.search.kr.Service.feign.BookService;
 import bulc.search.kr.dto.BookSearchDto;
-import bulc.search.kr.entity.BookHistoryRepository;
+import bulc.search.kr.entity.BookHistory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.util.ListUtils;
+
+import java.util.List;
 
 /**
  * Created by MAIN-PC on 2018-07-11.
@@ -51,8 +52,9 @@ public class BooksController {
             res.getMeta().setPage(req.getPage());
             res.getMeta().setSize(30);
         }
+
         //최근검색 저장
-        log.info("jpa : {}",bookJpaService.bookHistoryAdd(req).get(0).getQuery());
+        log.info("jpa : {}",bookJpaService.bookHistoryAdd(req).get(0).getRegDttm());
 
         model.addAttribute("result", res);
 
@@ -87,5 +89,24 @@ public class BooksController {
         log.info("result : {}", result);
 
         return "/book/bookDetail";
+    }
+
+    /**
+     * 최근 검색어
+     * @return
+     */
+    @RequestMapping(value = "/book/bookHistory", method= RequestMethod.GET)
+    public String boohistory(@ModelAttribute BookSearchDto.Req req, Model model) {
+        log.info("bookHistory");
+
+        req.setSize(30);
+
+        List<BookHistory> result = bookJpaService.getBookHistory(req);
+
+        model.addAttribute("result", result);
+
+        log.info("result : {}", result);
+
+        return "/book/bookHistory";
     }
 }

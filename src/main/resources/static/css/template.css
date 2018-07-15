@@ -31,5 +31,5 @@ li .left{float:left;}
 .btnOk{background:#ff690e; padding:13px 30px 15px; font-size:14px; color:#fff; text-decoration:none; height: 40px;}
 .btnCancle{background:#333; padding:13px 30px 15px; font-size:14px; color:#fff; text-decoration:none; height: 40px;}
 
-.searchHistory{width:200px; position:fixed; left:1500px; list-style:none; display:grid;}
+.searchHistory{width:200px; position:fixed; left:1500px; top:150px; list-style:none; display:grid;}
 .searchHistory li{border: solid 1px;}

@@ -4,7 +4,9 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 @Getter
 @Entity(name = "bookhistory")
@@ -28,7 +30,8 @@ public class BookHistory {
     @Column
     private String target;
 
-    private Timestamp regDttm;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar regDttm;
 
 
     @Builder
