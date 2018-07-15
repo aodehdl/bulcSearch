@@ -61,15 +61,20 @@
 <section layout:fragment="content">
     <div class="content">
         <!-- 검색결과 영역 -->
-        <div>
+        <div style="margin-top: 20px;">
             <form id="bookForm" name="bookForm" action="#">
-                <select id="target" name="target" style="width:100px; height:40px;">
-                    <option value="all">전체</option>
-                    <option value="keyword">저자</option>
-                    <option value="publisher">출판사</option>
-                </select>
-                <input type="text" id="query" name="query" class="text_input" style="width:100px;"/>
-                <div class="btnAreas">
+                <div class="btnSite">
+                    <select id="target" name="target" style="width:100px; height:40px;">
+                        <option value="all">전체</option>
+                        <option value="keyword">저자</option>
+                        <option value="publisher">출판사</option>
+                    </select>
+                    <input type="text" id="query" name="query" class="text_input" style="width:300px; height: 37px;"/>
+                    <select id="sort" name="sort" style="width:100px; height:40px;">
+                        <option value="recency">최신순</option>
+                        <option value="accuracy">정확도순</option>
+                        <option value="sales">판매량순</option>
+                    </select>
                     <a href="#" class="btnOk" onclick="bookView.getSearchBookList(); return false;">검색</a>
                 </div>
             </form>

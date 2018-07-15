@@ -13,10 +13,10 @@
                 <li class="left listShot"><img data-th-src="${orderItem.thumbnail}" width="95" height="138"></li>
                 <li class="left listDetail">
                     <dl>
-                        <dt style="margin: 20px;">
-                            <a href="#" data-th-onclick="'bookView.moveBookDetail(\''+${orderItem.barcode}+'\'); return false;'"><th:block data-th-utext="${orderItem.title}"/></a>
+                        <dt style="margin-bottom: 20px">
+                            <a href="#" data-th-onclick="'bookView.moveBookDetail(\''+${orderItem.barcode}+'\'); return false;'" class="title" data-th-utext="${orderItem.title}"></a>
                         </dt>
-                        <dd class="left listDetailInfo">
+                        <dd class="left listDetailInfo" style="border-right : 1px solid; margin-right: 20px">
                             <ul class="">
                                 <li><th:block data-th-utext="${orderItem.authors}"/></li>
                                 <li><th:block data-th-utext="${orderItem.datetime}"/></li>

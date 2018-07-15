@@ -8,47 +8,47 @@
     </script>
 </head>
 <body>
-    <div>
+    <div style="margin-top: 20px;">
         <div class="thumbnail left">
             <img data-th-src="${result?.thumbnail}" width="400" height="400">
         </div>
         <div class="info left">
             <span data-th-utext="${result?.title}" class="title"></span>
             <ul>
-                <li>
+                <li class="mt10">
                     <span class="left">저자</span>
                     <span data-th-text="${result?.authors}" class="right"></span>
                 </li>
-                <li>
+                <li class="mt10">
                     <span class="left">번역</span>
                     <span data-th-text="${result?.translators}" class="right"></span>
                 </li>
-                <li>
+                <li class="mt10">
                     <span class="left">출판사</span>
                     <span data-th-text="${result?.publisher}" class="right"></span>
                 </li>
-                <li>
+                <li class="mt10">
                     <div class="line"></div>
                     <span class="left">판매상황</span>
                     <span data-th-text="${result?.status}" class="right"></span>
                 </li>
-                <li>
+                <li class="mt10">
                     <span class="left">정가</span>
                     <span data-th-text="${result?.price}" class="right"></span>
                 </li>
-                <li>
+                <li class="mt10">
                     <span class="left">할인가</span>
                     <span data-th-text="${result?.salePrice}" class="right"></span>
                 </li>
-                <li>
-                    <div class="btnAreas">
+                <li class="mt10">
+                    <div class="btnSite">
                         <a href="#" class="btnOk">바로가기</a>
                         <a href="#" class="btnCancle" onclick="bookView.serachDetailShowHide(true); return false;">목록</a>
                     </div>
                 </li>
             </ul>
         </div>
-        <div data-th-text="${result?.contents}" class="detailInfo">
+        <div data-th-utext="${result?.contents}" class="detailInfo">
         </div>
     </div>
 </body>

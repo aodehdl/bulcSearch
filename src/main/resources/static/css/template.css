@@ -1,14 +1,16 @@
 @charset "UTF-8";
 ul{list-style: none;}
-a{text-decoration: none; }
+a{text-decoration: none; color: black;}
 .right{float:right;}
 li .left{float:left;}
 .left{float:left;}
 .inline-grid{display: inline-grid}
 .clear{clear:both;}
+.mt10{margin-top: 10px;}
+.mt20{margin-top: 20px;}
 
 .headerWrap{height:100px; background: #3b3b3b;}
-.header{min-width: 1000px; width: 1000px; margin: auto;}
+.header{min-width: 1000px; width: 1000px; margin: auto; line-height:100px;}
 .header li{float:left; padding: 0 20px 0 20px; }
 .header li a{text-decoration: none; color:#808080; font-size: 20px;}
 .header li a:hover{color: #fff}
@@ -24,7 +26,7 @@ li .left{float:left;}
 .info{width:550px;}
 .title{font-weight:bold; font-size:20px;}
 .line{border-top: 1px solid #5e7b71; margin: 10px 0;}
-.detailInfo{width:1000px; clear:both;}
+.detailInfo{width:1000px; clear:both; padding-top: 20px;}
 .info li{overflow:hidden;}
 
 .btnSite{width:100%; text-align:center;}
@@ -32,4 +34,4 @@ li .left{float:left;}
 .btnCancle{background:#333; padding:13px 30px 15px; font-size:14px; color:#fff; text-decoration:none; height: 40px;}
 
 .searchHistory{width:200px; position:fixed; left:1500px; top:150px; list-style:none; display:grid;}
-.searchHistory li{border: solid 1px;}
+.searchHistory li{border: solid 1px; padding: 4px;}
