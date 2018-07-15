@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface BookMarkRepository extends JpaRepository<BookMark, String> {
-    List<BookMark> findFirst30ByUserId(String userId, Sort sort);
+public interface UserInfoRepository extends JpaRepository<UserInfo, String> {
+    List<UserInfo> findOne1ByUserIdAndPassword(String userId, String password);
 }
