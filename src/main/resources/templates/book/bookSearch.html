@@ -31,7 +31,7 @@
                 </li>
             </ul>
         </li>
-        <li style="width:100%; text-align:center;">
+        <li data-th-test="${result?.meta?.pageableCount gt 0}" style="width:100%; text-align:center;">
             <input type="text" id="page" name="page" data-th-value="${result?.meta?.page}" style="width:40px;"/>
             /
             <span data-th-text="${(result?.meta?.pageableCount/result?.meta?.size) + 1}"></span>

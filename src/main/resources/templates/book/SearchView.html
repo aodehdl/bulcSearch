@@ -11,6 +11,7 @@
             getSearchBookList:function(){
                 bookView.lastSearchObj = $("#bookForm").serializeObject();
                 bookView.serachDetailShowHide(true);
+                $("#bookSearchResult").empty();
                 $("#bookSearchResult").load("/book/bookSearch", bookView.lastSearchObj,
                     function () {
                         $("#nav").load("/book/bookHistory");
@@ -26,6 +27,7 @@
                 bookView.lastSearchObj.page = $("#page").val();
 
                 bookView.serachDetailShowHide(true);
+                $("#bookSearchResult").empty();
 
                 $("#bookSearchResult").load("/book/bookSearch", bookView.lastSearchObj);
             },
@@ -62,11 +64,10 @@
     <div class="content">
         <!-- 검색결과 영역 -->
         <div style="margin-top: 20px;">
-            <form id="bookForm" name="bookForm" action="#">
+            <form id="bookForm" name="bookForm" action="#" onsubmit="return false;">
                 <div class="btnSite">
                     <select id="target" name="target" style="width:100px; height:40px;">
                         <option value="all">전체</option>
-                        <option value="keyword">저자</option>
                         <option value="publisher">출판사</option>
                     </select>
                     <input type="text" id="query" name="query" class="text_input" style="width:300px; height: 37px;"/>
